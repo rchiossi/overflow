@@ -6,7 +6,7 @@ Compile vulnerable1.c:
 gcc -g -m32 -z execstack -fno-stack-protector -o vulnerable1 vulnerable1.c
 
 Compile shellcode_base.c:
-gcc -g -m32 -z execstack -fno-stack-protector -o shellcode_bare shellcode_bare.c
+gcc -g -m32 -static -z execstack -fno-stack-protector -o shellcode_bare shellcode_bare.c
 
 
 Buffer Overflow Tutorial: (Aleph1 classic article!)

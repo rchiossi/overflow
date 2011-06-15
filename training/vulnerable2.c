@@ -2,7 +2,7 @@
 #include <string.h>
 
 void overflow(char* source) {
-  char buffer[128];
+  char buffer[12];
 
   printf("Copying %d bytes to buffer...\n",strlen(source));
   

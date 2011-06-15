@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 
-void overflow(char* source,int size) {
-  char buffer[128];
-
-  printf("copying %d bytes to buffer...\n",size);
+void overflow(char* source) {
+  char buffer[1024];
   
-  memcpy(buffer,source,size);
+  printf("Copying %d bytes to buffer in the address %p\n",strlen(source),buffer);
+  
+  strcpy(buffer,source);
 }
 
 int main(int argc, char *argv[]) {
-  if (argc > 2)
-    overflow(argv[1],atoi(argv[2]));
+  if (argc > 1)
+    overflow(argv[1]);
 
   printf("Exploit fail, better luck next time...\n");
 

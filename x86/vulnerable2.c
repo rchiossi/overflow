@@ -30,7 +30,7 @@ void show_map() {
 }
 
 int main(int argc, char **argv) {
-  //  show_map();
+  // show_map();
 
   my_value2 = 0x0;
 
@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
 
   func(argv);
 
-  printf("my_value2 = %d\n",my_value2);
+  printf("my_value2 = 0x%x\n",my_value2);
 
   return 0;
 }
